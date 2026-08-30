@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  telegram-medichat:
+    build: .
+    container_name: telegram_medichat_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DB_PATH=/app/data/medichat.db
